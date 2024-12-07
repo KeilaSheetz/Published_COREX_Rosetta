@@ -1,0 +1,9 @@
+In general, for any protein, an /Users/keilasheetz/Documents/Programs/COREX/READMEensemble must be generated using one of the "EnsembleGenerator" programs and the raw ensemble data output must be analyzed using the "StructureFileReader" program.  PDB files and other parameters are taken as input, when you execute you will be prompted for the appropriate response.
+
+A word of warning: PDB files containing any hydrogens (like NMR structures), or files containing non-standard residues (like SelMet) are often dumped as the COREX energy function was only parameterized on standard heavy atoms.
+
+The programs must be compiled before use.  Typing "make" in the shell will execute the Makefile and result in compilation of the EnsembleGenerator.c .  To compile EnsembleGeneratorMC.c you will need to edit the Makefile, replacing EnsembleGenerator.c with EnsembleGeneratorMC.c.  The former generates exhaustive ensemble (all possible states) and the latter is a Monte Carlo intelligent sampling that generates largely equivalent output in a fraction of the time.  There are wall clock time estimates hardcoded but please take these with a grain of salt as they were calibrated many years ago on older hardware.
+
+Compilation of the StructureFileReader is simpler, "cc StructureFileReader_ThermoDescriptors_fixed.c -lm" and of course changing the name of resulting a.out if desired.
+
+The output file from "StructureFileReader" has a header that labels the other values you are interested in - please note that these are in cal/mol (NOT kcal).  Entropy, dSconf, is in units of cal/(mol.K) and must be multiplied by the simulated temperature (whatever you input) to bring it to cal/mol.  deltaG may be obtained from either -RTlnKf or dGsolv + TdSconf.
