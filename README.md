@@ -1,4 +1,5 @@
 PyCOREX – PyRosetta
+Developed by the Hilser lab at Johns Hopkins University, updated December 2024
 
 These scripts are meant to be a tool and starting point for further exploration of the complex interface of protein structure prediction and design, through the lens
 of physics, statistics, and thermodynamics.
