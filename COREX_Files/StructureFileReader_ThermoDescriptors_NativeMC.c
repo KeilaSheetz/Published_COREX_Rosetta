@@ -6,7 +6,7 @@
 
 #define         Str_Len             100
 #define         Default_FName       "PDB Filename"
-#define         Default_Answer      "No"
+#define         Default_Answer      "Yes"
 #define         Max_Atoms           5000
 #define         Num_AA	            30
 #define         Max_Res             600
@@ -209,9 +209,9 @@ printf("\nEnter Entropy Scaling Factor [%5.3f] > ",W_Sconf);
     fgets(instring,Str_Len,stdin);
     ZotNewLine(instring);
     if (!strlen(instring))
-        W_Sconf=1.5;
+        W_Sconf=0.5;
     else
-       W_Sconf=1.5;
+       W_Sconf=0.5;
 
 printf("\nEnter Temperature [%2.0f deg C] > ",Current_Temp-273.15); 
     fgets(instring,Str_Len,stdin);
@@ -339,25 +339,25 @@ for(i=First_Res_Num;i<=Last_Res_Num;i++)
    }
 
 /* Here is where TE are assigned from Descriptors, if S==0.500 or S==1.500, JOW 5-16-22 */
-if(W_Sconf==1.5){
+if(W_Sconf==0.5){
  for(i=First_Res_Num;i<=Last_Res_Num;i++)
    {
     best=1000000.0; code[i][0]='0'; code[i][1]='0'; code[i][2]='0'; code[i][3]='\0';
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-10696.0)+abs(deltaH_ap[i]-(-1538.0))+abs(deltaH_pol[i]-1094.0)+abs(Current_Temp*deltaSconf[i]-(-9939.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-3527.33))+abs(deltaH_ap[i]-4859.67)+abs(deltaH_pol[i]-(-6083.1))+3*abs(Current_Temp*deltaSconf[i]-(-3124.07));
     if(temp<best) { code[i][0]='1'; code[i][1]='1'; code[i][2]='1'; code[i][3]='\0'; best=temp; }
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-10178.0)+abs(deltaH_ap[i]-(-1522.0))+abs(deltaH_pol[i]-2426.0)+abs(Current_Temp*deltaSconf[i]-(-8363.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-4398.51))+abs(deltaH_ap[i]-6292.12)+abs(deltaH_pol[i]-(-8649.36))+3*abs(Current_Temp*deltaSconf[i]-(-4101.96));
     if(temp<best) { code[i][0]='2'; code[i][1]='2'; code[i][2]='2'; code[i][3]='\0'; best=temp; }
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-9859.0)+abs(deltaH_ap[i]-(-1028.0))+abs(deltaH_pol[i]-(-1075.0))+abs(Current_Temp*deltaSconf[i]-(-10902.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-6385.28))+abs(deltaH_ap[i]-6494.8)+abs(deltaH_pol[i]-(-11496.37))+3*abs(Current_Temp*deltaSconf[i]-(-4885.58));
     if(temp<best) { code[i][0]='3'; code[i][1]='3'; code[i][2]='3'; code[i][3]='\0'; best=temp; }
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-9100.0)+abs(deltaH_ap[i]-662.0)+abs(deltaH_pol[i]-(-400.0))+abs(Current_Temp*deltaSconf[i]-(-10327.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-7473.9))+abs(deltaH_ap[i]-10902.42)+abs(deltaH_pol[i]-(-9443.36))+3*abs(Current_Temp*deltaSconf[i]-(-4065.52));
     if(temp<best) { code[i][0]='4'; code[i][1]='4'; code[i][2]='4'; code[i][3]='\0'; best=temp; }
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-9082.0)+abs(deltaH_ap[i]-(-996.0))+abs(deltaH_pol[i]-44.0)+abs(Current_Temp*deltaSconf[i]-(-9312.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-8548.46))+abs(deltaH_ap[i]-8756.6)+abs(deltaH_pol[i]-(-12388.62))+3*abs(Current_Temp*deltaSconf[i]-(-4356.47));
     if(temp<best) { code[i][0]='5'; code[i][1]='5'; code[i][2]='5'; code[i][3]='\0'; best=temp; }
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-8427.0)+abs(deltaH_ap[i]-(-1115.0))+abs(deltaH_pol[i]-1085.0)+abs(Current_Temp*deltaSconf[i]-(-7704.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-9822.5))+abs(deltaH_ap[i]-9078.1)+abs(deltaH_pol[i]-(-15059.45))+3*abs(Current_Temp*deltaSconf[i]-(-5225.9));
     if(temp<best) { code[i][0]='6'; code[i][1]='6'; code[i][2]='6'; code[i][3]='\0'; best=temp; }
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-7611.0)+abs(deltaH_ap[i]-(-303.0))+abs(deltaH_pol[i]-(-2168.0))+abs(Current_Temp*deltaSconf[i]-(-9790.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-10527.03))+abs(deltaH_ap[i]-14045.29)+abs(deltaH_pol[i]-(-12487.24))+3*abs(Current_Temp*deltaSconf[i]-(-4573.54));
     if(temp<best) { code[i][0]='7'; code[i][1]='7'; code[i][2]='7'; code[i][3]='\0'; best=temp; }
-    temp=abs(-1.9872*Current_Temp*lnk_f[i]-7500.0)+abs(deltaH_ap[i]-(-1083.0))+abs(deltaH_pol[i]-(-915.0))+abs(Current_Temp*deltaSconf[i]-(-8323.0));
+    temp=abs(-1.9872*Current_Temp*lnk_f[i]-(-12425.67))+abs(deltaH_ap[i]-14167.25)+abs(deltaH_pol[i]-(-16275.93))+3*abs(Current_Temp*deltaSconf[i]-(-5563.24));
     if(temp<best) { code[i][0]='8'; code[i][1]='8'; code[i][2]='8'; code[i][3]='\0'; best=temp; }
     /* Following is the old code */
     /*code[i][0]='M';
@@ -376,7 +376,7 @@ else { for(i=First_Res_Num;i<=Last_Res_Num;i++){ code[i][0]='0'; code[i][1]='0';
 /* Here is where scoring table is encoded, from the array at tail-end, JOW 5-16-22 */
 for(i=First_Res_Num;i<=Last_Res_Num;i++) env_odds[i]=0.0;
 
-if(W_Sconf==1.5){
+if(W_Sconf==0.5){
  for(i=First_Res_Num;i<=Last_Res_Num;i++)
    {
     j=0;
@@ -399,7 +399,7 @@ if(W_Sconf==1.5){
    }
 }
 
-sprintf(out_fname,"%s.W%d.T%2.0fS%2.3f.ThermoDescriptD",inFName,window_size,Current_Temp-273.15,W_Sconf);
+sprintf(out_fname,"%s.W%d.T%2.0fS%2.3f.ThermoDescriptN",inFName,window_size,Current_Temp-273.15,W_Sconf);
 printf("\nOut file = %s\n",out_fname);
 outfile=fopen(out_fname,"w");
 Save_Probabilities();
@@ -577,7 +577,7 @@ void Save_Probabilities(void)
 {
 int i;
 
-fprintf(outfile,"Res  Index  dHpol  dHap  dSconf  dGsolv  H_ratio  S_ratio  k_f  ln(k_f)  DTE  Odds\n");
+fprintf(outfile,"Res  Index  dHpol  dHap  dSconf  dGsolv  H_ratio  S_ratio  k_f  ln(k_f)  NTE  Odds\n");
 for(i=First_Res_Num;i<=Last_Res_Num;i++)
    {
     fprintf(outfile,"%s %d %e %e %e %e %e %e %e %e %1s %e\n",resname[i],pdb_resnum[i],deltaH_pol[i],deltaH_ap[i],deltaSconf[i],deltaG_solv[i],H_ratio[i],S_ratio[i],k_f[i],lnk_f[i],code[i],env_odds[i]);
@@ -869,14 +869,14 @@ thermo_env[8]="888";
 
 
 /* ALA */
-log_odds[1][1]=-0.46;
-log_odds[1][2]=-0.08;
-log_odds[1][3]=-0.55;
-log_odds[1][4]=-0.30;
-log_odds[1][5]=0.26;
-log_odds[1][6]=0.19;
-log_odds[1][7]=0.14;
-log_odds[1][8]=0.46;
+log_odds[1][1]=0.45;
+log_odds[1][2]=0.05;
+log_odds[1][3]=-0.29;
+log_odds[1][4]=0.02;
+log_odds[1][5]=0.39;
+log_odds[1][6]=-0.45;
+log_odds[1][7]=0.15;
+log_odds[1][8]=-0.93;
 /*log_odds[1][1]=0.447798;
 log_odds[1][2]=-0.27829;
 log_odds[1][3]=0.421961;
@@ -890,14 +890,14 @@ log_odds[1][10]=-0.58219;
 log_odds[1][11]=0.2937;
 log_odds[1][12]=-0.55706;*/
 /* ARG */
-log_odds[2][1]=-1.86;
-log_odds[2][2]=-0.03;
-log_odds[2][3]=-1.83;
-log_odds[2][4]=-0.47;
-log_odds[2][5]=-0.53;
-log_odds[2][6]=0.94;
-log_odds[2][7]=0.35;
-log_odds[2][8]=0.80;
+log_odds[2][1]=-0.53;
+log_odds[2][2]=-0.42;
+log_odds[2][3]=-0.55;
+log_odds[2][4]=-0.29;
+log_odds[2][5]=0.28;
+log_odds[2][6]=0.40;
+log_odds[2][7]=-0.44;
+log_odds[2][8]=0.66;
 /*log_odds[2][1]=-0.43267;
 log_odds[2][2]=-0.41432;
 log_odds[2][3]=0.308753;
@@ -911,14 +911,14 @@ log_odds[2][10]=-0.21946;
 log_odds[2][11]=0.834623;
 log_odds[2][12]=0.546607;*/
 /* ASN */
-log_odds[3][1]=0.36;
-log_odds[3][2]=-0.60;
-log_odds[3][3]=0.85;
-log_odds[3][4]=-0.00;
-log_odds[3][5]=-0.06;
-log_odds[3][6]=-1.20;
-log_odds[3][7]=-0.29;
-log_odds[3][8]=-1.29;
+log_odds[3][1]=-0.27;
+log_odds[3][2]=0.10;
+log_odds[3][3]=0.54;
+log_odds[3][4]=-0.47;
+log_odds[3][5]=0.07;
+log_odds[3][6]=0.45;
+log_odds[3][7]=-1.11;
+log_odds[3][8]=-0.26;
 /*log_odds[3][1]=-0.41075;
 log_odds[3][2]=-0.41075;
 log_odds[3][3]=-0.14194;
@@ -932,14 +932,14 @@ log_odds[3][10]=-0.3729;
 log_odds[3][11]=-0.02585;
 log_odds[3][12]=0.680225;*/
 /* ASP */
-log_odds[4][1]=0.18;
-log_odds[4][2]=-0.79;
-log_odds[4][3]=0.73;
-log_odds[4][4]=-0.11;
-log_odds[4][5]=0.04;
-log_odds[4][6]=-1.14;
-log_odds[4][7]=0.16;
-log_odds[4][8]=-0.55;
+log_odds[4][1]=-0.22;
+log_odds[4][2]=0.11;
+log_odds[4][3]=0.47;
+log_odds[4][4]=-0.42;
+log_odds[4][5]=0.15;
+log_odds[4][6]=0.32;
+log_odds[4][7]=-0.61;
+log_odds[4][8]=-0.41;
 /*log_odds[4][1]=-0.44228;
 log_odds[4][2]=-0.10808;
 log_odds[4][3]=0.27852;
@@ -966,14 +966,14 @@ log_odds[5][10]=0.0;
 log_odds[5][11]=0.0;
 log_odds[5][12]=0.0;
 /* CYS */
-log_odds[6][1]=0.38;
-log_odds[6][2]=0.75;
-log_odds[6][3]=-0.58;
-log_odds[6][4]=-0.56;
-log_odds[6][5]=-0.06;
-log_odds[6][6]=0.19;
-log_odds[6][7]=-1.07;
-log_odds[6][8]=-0.66;
+log_odds[6][1]=-0.29;
+log_odds[6][2]=-0.18;
+log_odds[6][3]=0.36;
+log_odds[6][4]=-1.62;
+log_odds[6][5]=-0.09;
+log_odds[6][6]=0.66;
+log_odds[6][7]=-0.56;
+log_odds[6][8]=0.39;
 /*log_odds[6][1]=-0.82883;
 log_odds[6][2]=-0.62816;
 log_odds[6][3]=-0.24157;
@@ -987,14 +987,14 @@ log_odds[6][10]=-0.3592;
 log_odds[6][11]=0.143851;
 log_odds[6][12]=0.920546;*/
 /* GLN */
-log_odds[7][1]=-0.38;
-log_odds[7][2]=-1.11;
-log_odds[7][3]=0.34;
-log_odds[7][4]=0.33;
-log_odds[7][5]=-0.04;
-log_odds[7][6]=-0.53;
-log_odds[7][7]=0.55;
-log_odds[7][8]=0.11;
+log_odds[7][1]=-0.19;
+log_odds[7][2]=-0.25;
+log_odds[7][3]=0.15;
+log_odds[7][4]=-0.89;
+log_odds[7][5]=0.22;
+log_odds[7][6]=0.44;
+log_odds[7][7]=-0.59;
+log_odds[7][8]=0.44;
 /*log_odds[7][1]=-1.35675;
 log_odds[7][2]=-0.93294;
 log_odds[7][3]=-0.20987;
@@ -1008,14 +1008,14 @@ log_odds[7][10]=0.33455;
 log_odds[7][11]=0.586289;
 log_odds[7][12]=0.76992;*/
 /* GLU */
-log_odds[8][1]=0.10;
-log_odds[8][2]=-0.51;
-log_odds[8][3]=0.48;
-log_odds[8][4]=0.29;
-log_odds[8][5]=0.06;
-log_odds[8][6]=-0.85;
-log_odds[8][7]=0.12;
-log_odds[8][8]=-0.54;
+log_odds[8][1]=-0.37;
+log_odds[8][2]=-0.07;
+log_odds[8][3]=0.41;
+log_odds[8][4]=-0.33;
+log_odds[8][5]=-0.12;
+log_odds[8][6]=0.39;
+log_odds[8][7]=-0.47;
+log_odds[8][8]=0.13;
 /*log_odds[8][1]=-0.54632;
 log_odds[8][2]=0.222332;
 log_odds[8][3]=-0.01968;
@@ -1042,14 +1042,14 @@ log_odds[9][10]=0.0;
 log_odds[9][11]=0.0;
 log_odds[9][12]=0.0;
 /* GLY */
-log_odds[10][1]=0.98;
-log_odds[10][2]=-0.80;
-log_odds[10][3]=0.90;
-log_odds[10][4]=-1.18;
-log_odds[10][5]=-0.49;
-log_odds[10][6]=-1.52;
-log_odds[10][7]=-0.98;
-log_odds[10][8]=-1.76;
+log_odds[10][1]=0.37;
+log_odds[10][2]=0.66;
+log_odds[10][3]=0.65;
+log_odds[10][4]=-0.25;
+log_odds[10][5]=-0.27;
+log_odds[10][6]=-0.37;
+log_odds[10][7]=-1.08;
+log_odds[10][8]=-1.28;
 /*log_odds[10][1]=0.113474;
 log_odds[10][2]=0.855742;
 log_odds[10][3]=0.279528;
@@ -1063,14 +1063,14 @@ log_odds[10][10]=-1.02188;
 log_odds[10][11]=-0.95246;
 log_odds[10][12]=-0.80437;*/
 /* HIS */
-log_odds[11][1]=0.10;
-log_odds[11][2]=-0.00;
-log_odds[11][3]=-0.18;
-log_odds[11][4]=0.10;
-log_odds[11][5]=0.25;
-log_odds[11][6]=0.12;
-log_odds[11][7]=-0.61;
-log_odds[11][8]=-0.18;
+log_odds[11][1]=-0.18;
+log_odds[11][2]=-0.24;
+log_odds[11][3]=-0.26;
+log_odds[11][4]=-0.19;
+log_odds[11][5]=0.04;
+log_odds[11][6]=0.08;
+log_odds[11][7]=0.10;
+log_odds[11][8]=0.45;
 /*log_odds[11][1]=-0.22366;
 log_odds[11][2]=0.264696;
 log_odds[11][3]=-0.04185;
@@ -1084,14 +1084,14 @@ log_odds[11][10]=-0.0905;
 log_odds[11][11]=0.241285;
 log_odds[11][12]=-0.44836;*/
 /* ILE */
-log_odds[12][1]=-0.65;
-log_odds[12][2]=0.96;
-log_odds[12][3]=-1.62;
-log_odds[12][4]=-1.14;
-log_odds[12][5]=-0.10;
-log_odds[12][6]=0.67;
-log_odds[12][7]=-0.82;
-log_odds[12][8]=0.13;
+log_odds[12][1]=0.12;
+log_odds[12][2]=-0.24;
+log_odds[12][3]=-0.77;
+log_odds[12][4]=0.56;
+log_odds[12][5]=-0.29;
+log_odds[12][6]=-0.75;
+log_odds[12][7]=0.57;
+log_odds[12][8]=-0.21;
 /*log_odds[12][1]=0.299592;
 log_odds[12][2]=-0.31067;
 log_odds[12][3]=-1.31037;
@@ -1105,14 +1105,14 @@ log_odds[12][10]=0.538113;
 log_odds[12][11]=-0.5319;
 log_odds[12][12]=-0.73604;*/
 /* LEU */
-log_odds[13][1]=-0.22;
-log_odds[13][2]=0.20;
-log_odds[13][3]=-0.72;
-log_odds[13][4]=-0.46;
-log_odds[13][5]=0.16;
-log_odds[13][6]=0.31;
-log_odds[13][7]=-0.08;
-log_odds[13][8]=0.38;
+log_odds[13][1]=-0.23;
+log_odds[13][2]=-0.20;
+log_odds[13][3]=-0.85;
+log_odds[13][4]=0.39;
+log_odds[13][5]=-0.03;
+log_odds[13][6]=-0.44;
+log_odds[13][7]=0.55;
+log_odds[13][8]=-0.09;
 /*log_odds[13][1]=-0.12288;
 log_odds[13][2]=-0.03554;
 log_odds[13][3]=-0.38291;
@@ -1126,14 +1126,14 @@ log_odds[13][10]=0.174583;
 log_odds[13][11]=-0.04976;
 log_odds[13][12]=-0.31249;*/
 /* LYS */
-log_odds[14][1]=0.13;
-log_odds[14][2]=-0.05;
-log_odds[14][3]=0.18;
-log_odds[14][4]=0.04;
-log_odds[14][5]=0.07;
-log_odds[14][6]=-0.15;
-log_odds[14][7]=-0.25;
-log_odds[14][8]=-0.18;
+log_odds[14][1]=-0.11;
+log_odds[14][2]=0.05;
+log_odds[14][3]=0.39;
+log_odds[14][4]=-0.12;
+log_odds[14][5]=0.01;
+log_odds[14][6]=0.20;
+log_odds[14][7]=-0.43;
+log_odds[14][8]=-0.25;
 /*log_odds[14][1]=0.07382;
 log_odds[14][2]=0.124959;
 log_odds[14][3]=0.255622;
@@ -1147,14 +1147,14 @@ log_odds[14][10]=-0.00924;
 log_odds[14][11]=-0.08028;
 log_odds[14][12]=0.072263;*/
 /* MET */
-log_odds[15][1]=-0.19;
-log_odds[15][2]=-0.04;
-log_odds[15][3]=-0.18;
-log_odds[15][4]=0.07;
-log_odds[15][5]=0.24;
-log_odds[15][6]=-0.07;
-log_odds[15][7]=0.10;
-log_odds[15][8]=-0.01;
+log_odds[15][1]=-0.28;
+log_odds[15][2]=-0.39;
+log_odds[15][3]=-0.11;
+log_odds[15][4]=-0.57;
+log_odds[15][5]=0.07;
+log_odds[15][6]=0.18;
+log_odds[15][7]=0.12;
+log_odds[15][8]=0.57;
 /*log_odds[15][1]=0.243481;
 log_odds[15][2]=-0.56745;
 log_odds[15][3]=0.512294;
@@ -1168,14 +1168,14 @@ log_odds[15][10]=0.543695;
 log_odds[15][11]=-0.26544;
 log_odds[15][12]=0.259942;*/
 /* PHE */
-log_odds[16][1]=-0.29;
-log_odds[16][2]=-0.55;
-log_odds[16][3]=-0.11;
-log_odds[16][4]=0.96;
-log_odds[16][5]=-0.09;
-log_odds[16][6]=-0.59;
-log_odds[16][7]=0.42;
-log_odds[16][8]=-0.70;
+log_odds[16][1]=-1.53;
+log_odds[16][2]=-1.05;
+log_odds[16][3]=-1.05;
+log_odds[16][4]=0.18;
+log_odds[16][5]=-0.50;
+log_odds[16][6]=-0.66;
+log_odds[16][7]=0.98;
+log_odds[16][8]=0.58;
 /*log_odds[16][1]=-0.40378;
 log_odds[16][2]=0.020032;
 log_odds[16][3]=0.0;
@@ -1189,14 +1189,14 @@ log_odds[16][10]=1.017232;
 log_odds[16][11]=-0.48889;
 log_odds[16][12]=-0.40534;*/
 /* PRO */
-log_odds[17][1]=-0.12;
-log_odds[17][2]=-0.12;
-log_odds[17][3]=-0.56;
-log_odds[17][4]=-0.16;
-log_odds[17][5]=0.14;
-log_odds[17][6]=0.49;
-log_odds[17][7]=-0.27;
-log_odds[17][8]=0.27;
+log_odds[17][1]=0.99;
+log_odds[17][2]=0.63;
+log_odds[17][3]=-0.42;
+log_odds[17][4]=0.38;
+log_odds[17][5]=-0.14;
+log_odds[17][6]=-1.36;
+log_odds[17][7]=-0.49;
+log_odds[17][8]=-2.00;
 /*log_odds[17][1]=1.042648;
 log_odds[17][2]=0.327028;
 log_odds[17][3]=0.221148;
@@ -1210,14 +1210,14 @@ log_odds[17][10]=-2.63085;
 log_odds[17][11]=-1.12635;
 log_odds[17][12]=-1.8901;*/
 /* SER */
-log_odds[18][1]=-1.36;
-log_odds[18][2]=-1.28;
-log_odds[18][3]=-0.49;
-log_odds[18][4]=-0.51;
-log_odds[18][5]=0.05;
-log_odds[18][6]=0.03;
-log_odds[18][7]=0.89;
-log_odds[18][8]=0.86;
+log_odds[18][1]=-0.03;
+log_odds[18][2]=0.05;
+log_odds[18][3]=0.04;
+log_odds[18][4]=-0.39;
+log_odds[18][5]=0.37;
+log_odds[18][6]=0.40;
+log_odds[18][7]=-0.58;
+log_odds[18][8]=-0.37;
 /*log_odds[18][1]=-0.14292;
 log_odds[18][2]=-0.32174;
 log_odds[18][3]=0.064857;
@@ -1231,14 +1231,14 @@ log_odds[18][10]=-0.75697;
 log_odds[18][11]=0.388581;
 log_odds[18][12]=0.055235;*/
 /* THR */
-log_odds[19][1]=0.25;
-log_odds[19][2]=0.53;
-log_odds[19][3]=-0.23;
-log_odds[19][4]=-0.11;
-log_odds[19][5]=0.09;
-log_odds[19][6]=-0.05;
-log_odds[19][7]=-0.70;
-log_odds[19][8]=-0.57;
+log_odds[19][1]=0.15;
+log_odds[19][2]=0.17;
+log_odds[19][3]=0.19;
+log_odds[19][4]=0.24;
+log_odds[19][5]=-0.16;
+log_odds[19][6]=-0.11;
+log_odds[19][7]=-0.16;
+log_odds[19][8]=-0.51;
 /*log_odds[19][1]=0.113274;
 log_odds[19][2]=0.269493;
 log_odds[19][3]=0.129996;
@@ -1252,14 +1252,14 @@ log_odds[19][10]=-0.18101;
 log_odds[19][11]=-0.69141;
 log_odds[19][12]=-0.60786;*/
 /* TRP */
-log_odds[20][1]=0.09;
-log_odds[20][2]=-0.39;
-log_odds[20][3]=-0.03;
-log_odds[20][4]=0.78;
-log_odds[20][5]=0.03;
-log_odds[20][6]=-0.52;
-log_odds[20][7]=0.15;
-log_odds[20][8]=-1.06;
+log_odds[20][1]=-0.90;
+log_odds[20][2]=-0.82;
+log_odds[20][3]=-0.83;
+log_odds[20][4]=-0.03;
+log_odds[20][5]=-1.04;
+log_odds[20][6]=-0.79;
+log_odds[20][7]=0.72;
+log_odds[20][8]=1.09;
 /*log_odds[20][1]=-1.5419;
 log_odds[20][2]=0.268211;
 log_odds[20][3]=0.0;
@@ -1273,14 +1273,14 @@ log_odds[20][10]=1.635786;
 log_odds[20][11]=-0.05839;
 log_odds[20][12]=-0.3803;*/
 /* TYR */
-log_odds[21][1]=-0.59;
-log_odds[21][2]=-0.79;
-log_odds[21][3]=-0.58;
-log_odds[21][4]=1.48;
-log_odds[21][5]=-0.52;
-log_odds[21][6]=-0.51;
-log_odds[21][7]=0.26;
-log_odds[21][8]=-1.20;
+log_odds[21][1]=-0.93;
+log_odds[21][2]=-1.09;
+log_odds[21][3]=-0.95;
+log_odds[21][4]=0.05;
+log_odds[21][5]=-0.55;
+log_odds[21][6]=-0.09;
+log_odds[21][7]=0.42;
+log_odds[21][8]=1.06;
 /*log_odds[21][1]=-0.98667;
 log_odds[21][2]=-0.38054;
 log_odds[21][3]=-1.7857;
@@ -1294,14 +1294,14 @@ log_odds[21][10]=1.16139;
 log_odds[21][11]=-0.28332;
 log_odds[21][12]=0.537826;*/
 /* VAL */
-log_odds[22][1]=0.21;
-log_odds[22][2]=0.80;
-log_odds[22][3]=-0.87;
-log_odds[22][4]=-1.16;
-log_odds[22][5]=0.02;
-log_odds[22][6]=0.31;
-log_odds[22][7]=-1.02;
-log_odds[22][8]=-0.15;
+log_odds[22][1]=0.20;
+log_odds[22][2]=-0.03;
+log_odds[22][3]=-0.60;
+log_odds[22][4]=0.51;
+log_odds[22][5]=-0.10;
+log_odds[22][6]=-0.63;
+log_odds[22][7]=0.38;
+log_odds[22][8]=-0.44;
 /*log_odds[22][1]=0.283564;
 log_odds[22][2]=-0.55722;
 log_odds[22][3]=-0.17062;

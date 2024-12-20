@@ -6,7 +6,7 @@
 
 #define         Str_Len             100
 #define         Default_FName       "PDB Filename"
-#define         Default_Answer      "No"
+#define         Default_Answer      "Yes"
 #define         Max_Atoms           5000
 #define         Num_AA	            30
 #define         Max_Res             600
